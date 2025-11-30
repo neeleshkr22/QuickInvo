@@ -57,27 +57,29 @@ export default function InvoiceItem({
   };
 
   return (
-    <div className="grid grid-cols-12 gap-4 p-4 border rounded-lg">
-      <div className="col-span-5">
-        <Label>Description</Label>
+    <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 p-3 sm:p-4 border rounded-lg bg-neutral-900 text-white border-neutral-800">
+      <div className="sm:col-span-5 col-span-1">
+        <Label className="mb-2 block">Description</Label>
         <Input
           placeholder="Item description"
           value={item.description}
           onChange={(e) => updateItem(index, "description", e.target.value)}
+          className="bg-neutral-800 text-white border border-neutral-700 mb-2"
         />
       </div>
-      <div className="col-span-2">
-        <Label>Quantity</Label>
+      <div className="sm:col-span-2 col-span-1">
+        <Label className="mb-2 block">Quantity</Label>
         <Input
           type="number"
           min="1"
           value={item.quantity}
           onChange={(e) => handleQuantityChange(e.target.value)}
           onBlur={handleQuantityBlur}
+          className="bg-neutral-800 text-white border border-neutral-700 mb-2"
         />
       </div>
-      <div className="col-span-2">
-        <Label>Rate ($)</Label>
+      <div className="sm:col-span-2 col-span-1">
+        <Label className="mb-2 block">Rate ($)</Label>
         <Input
           type="number"
           min="0"
@@ -85,22 +87,24 @@ export default function InvoiceItem({
           value={item.rate}
           onChange={(e) => handleRateChange(e.target.value)}
           onBlur={handleRateBlur}
+          className="bg-neutral-800 text-white border border-neutral-700 mb-2"
         />
       </div>
-      <div className="col-span-2">
-        <Label>Amount</Label>
-        <div className="h-10 px-3 py-2 bg-gray-50 border rounded-md flex items-center">
+      <div className="sm:col-span-2 col-span-1">
+        <Label className="mb-2 block">Amount</Label>
+        <div className="h-10 px-3 py-2 bg-neutral-800 text-white border border-neutral-700 rounded-md flex items-center mb-2">
           ${typeof item.amount === "number" ? item.amount.toFixed(2) : "0.00"}
         </div>
       </div>
-      <div className="col-span-1 flex items-end">
+      <div className="sm:col-span-1 col-span-1 flex items-center justify-center mt-2 sm:mt-0">
         <Button
           variant="outline"
           size="icon"
           onClick={() => removeItem(index)}
           disabled={!canRemove}
+          className="border-neutral-700 bg-red-600 hover:bg-red-700 text-white"
         >
-          <Trash2 className="w-4 h-4" />
+          <Trash2 className="w-5 h-5" />
         </Button>
       </div>
     </div>

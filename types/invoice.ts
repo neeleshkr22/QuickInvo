@@ -7,15 +7,19 @@ export interface InvoiceItem {
 }
 
 export interface InvoiceData {
-  invoiceNumber: string
-  date: string
-  fromName: string
-  fromEmail: string
-  toName: string
-  toEmail: string
-  items: InvoiceItem[]
-  taxRate: number | string
-  subtotal: number
-  taxAmount: number
-  total: number
+  invoiceNumber: string;
+  date: string;
+  fromName: string;
+  fromEmail: string;
+  toName: string;
+  toEmail: string;
+  items: InvoiceItem[];
+  taxRate: number | string;
+  subtotal: number;
+  taxAmount: number;
+  total: number;
+  logoUrl?: string;
+  bankName?: string;
+  bankAccount?: string;
+  paymentTerms?: string;
 }

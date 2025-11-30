@@ -5,27 +5,24 @@ import InvoiceItem from "./invoice-item";
 import { useInvoice } from "@/context/invoice-context";
 
 export default function ItemsList() {
-  const { invoice, addItem } = useInvoice();
+  const { invoice, addItem, removeItem, updateItem } = useInvoice();
 
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Invoice Items</CardTitle>
-        <Button onClick={addItem} size="sm">
-          <Plus className="w-4 h-4 mr-2" />
-          Add Item
+    <div className="bg-neutral-900 text-white p-3 sm:p-6 rounded-lg shadow-md mb-6 border border-neutral-800">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Invoice Items</h2>
+        <Button onClick={addItem} className="bg-neutral-800 text-white border border-neutral-700">
+          + Add Item
         </Button>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {invoice.items.map((item, index) => (
-          <InvoiceItem
-            key={item.id}
-            item={item}
-            index={index}
-            canRemove={invoice.items.length > 1}
-          />
-        ))}
-      </CardContent>
-    </Card>
+      </div>
+      {invoice.items.map((item, idx) => (
+        <InvoiceItem
+          key={item.id}
+          item={item}
+          index={idx}
+          canRemove={invoice.items.length > 1}
+        />
+      ))}
+    </div>
   );
 }

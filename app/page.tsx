@@ -21,8 +21,8 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h1 className="text-2xl font-bold">QuickInvo</h1>
-              <p className="text-gray-400">Create professional invoices quickly</p>
+              <h1 className="text-2xl font-bold font-mono">QuickInvo</h1>
+              <p className="text-gray-400 font-mono">Create professional invoices quickly</p>
             </div>
             <Button
               onClick={() => setShowPreview(!showPreview)}
@@ -87,7 +87,7 @@ export default function Home() {
         </h1>
 
         {/* Buttons */}
-        <div className="flex mr-[99vh] gap-4 mt-6 z-10 ">
+        <div className="flex mr-[99vh] gap-4 mt-6 z-10 ml-16 ">
           <Button
             size="lg"
             className="relative overflow-hidden px-6 py-3 rounded-2xl text-white font-semibold 
@@ -104,11 +104,12 @@ export default function Home() {
           </Button>
 
           <Button
+            
             size="lg"
             variant="secondary"
             className="bg-neutral-800 text-gray-200 hover:bg-neutral-700 rounded-full px-6"
           >
-            <Github className="w-5 h-5 mr-2" /> Open Source
+            <Github className="w-5 mt-1 font-mono mr-2 "  /> <div className="font-mono"><a href="https://github.com/neeleshkr22/QuickInvo">Open Source</a> </div>
           </Button>
         </div>
       </section>
@@ -116,22 +117,22 @@ export default function Home() {
       {/* FEATURES SECTION */}
       <section className="grid md:grid-cols-3 gap-8 px-8 py-16 border-t border-neutral-800 bg-neutral-950 mr-50 ml-50">
         <div className="border-r border-neutral-800 pr-6">
-          <h3 className="text-lg font-semibold mb-3">Beautiful</h3>
-          <p className="text-gray-400 text-sm">
+          <h3 className="text-lg font-semibold font-mono mb-3">Beautiful</h3>
+          <p className="text-gray-400 text-sm font-mono">
             Professionally designed and visually appealing invoices can increase
             the chances of clients paying promptly.
           </p>
         </div>
         <div className="border-r border-neutral-800 px-6">
-          <h3 className="text-lg font-semibold mb-3">Free & Unlimited</h3>
-          <p className="text-gray-400 text-sm">
+          <h3 className="text-lg font-semibold font-mono mb-3">Free & Unlimited</h3>
+          <p className="text-gray-400 text-sm font-mono">
             Create and send as many invoices as you need — no limits, no hidden
             costs, just seamless billing freedom.
           </p>
         </div>
         <div className="pl-6">
-          <h3 className="text-lg font-semibold mb-3">Safe & Open Source</h3>
-          <p className="text-gray-400 text-sm">
+          <h3 className="text-lg font-semibold mb-3 font-mono">Safe & Open Source</h3>
+          <p className="text-gray-400 text-sm font-mono">
             Your data stays yours — we never track, sell, or share it.
             Store everything locally or securely — the choice is yours.
           </p>

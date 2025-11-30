@@ -5,63 +5,27 @@ import { Label } from "./ui/label";
 
 export default function TaxAndTotals() {
   const { invoice, updateInvoice } = useInvoice();
-
-  const handleTaxRateChange = (value: string) => {
-    // Allow empty string temporarily
-    if (value === "") {
-      updateInvoice({ taxRate: "" });
-    } else {
-      const numValue = Number.parseFloat(value);
-      if (!isNaN(numValue) && numValue >= 0 && numValue <= 100) {
-        updateInvoice({ taxRate: numValue });
-      }
-    }
-  };
-
-  const handleTaxRateBlur = () => {
-    // If empty on blur, set to 0
-    if (invoice.taxRate === "" || isNaN(Number(invoice.taxRate))) {
-      updateInvoice({ taxRate: 0 });
-    }
-  };
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Tax & Totals</CardTitle>
-      </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="bg-neutral-900 text-white p-3 sm:p-6 rounded-lg shadow-md mb-6 border border-neutral-800">
+      <h2 className="text-xl font-semibold mb-4">Tax & Totals</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
         <div>
           <Label htmlFor="taxRate">Tax Rate (%)</Label>
           <Input
             id="taxRate"
             type="number"
-            min="0"
-            max="100"
-            step="0.01"
             value={invoice.taxRate}
-            onChange={(e) => handleTaxRateChange(e.target.value)}
-            onBlur={handleTaxRateBlur}
+            onChange={e => updateInvoice({ taxRate: Number(e.target.value) })}
+            className="bg-neutral-800 text-white border border-neutral-700"
           />
         </div>
-        <div className="space-y-2">
-          <div className="flex justify-between">
-            <span>Subtotal:</span>
-            <span>${invoice.subtotal.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>
-              Tax ({typeof invoice.taxRate === "number" ? invoice.taxRate : 0}
-              %):
-            </span>
-            <span>${invoice.taxAmount.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between font-bold text-lg border-t pt-2">
-            <span>Total:</span>
-            <span>${invoice.total.toFixed(2)}</span>
-          </div>
+        <div className="flex flex-col items-end">
+          <div className="mb-2">Subtotal: <span className="font-semibold">${invoice.subtotal.toFixed(2)}</span></div>
+          <div className="mb-2">Tax ({invoice.taxRate}%): <span className="font-semibold">${invoice.taxAmount.toFixed(2)}</span></div>
+          <div className="text-2xl font-bold">Total: <span className="text-green-400">${invoice.total.toFixed(2)}</span></div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
+// ...existing code...
